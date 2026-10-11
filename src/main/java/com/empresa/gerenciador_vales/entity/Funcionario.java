@@ -41,7 +41,7 @@ public class Funcionario {
         this.endereco = endereco;
     }
 
-    public Long gitId() {
+    public Long getId() {
         return id;
     }
 
