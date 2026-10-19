@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.empresa.gerenciador_vales.entity.Funcionario;
+import com.empresa.gerenciador_vales.exception.FuncionarioNotFoundException;
 import com.empresa.gerenciador_vales.repository.FuncionarioRepository;
 
 @Service 
@@ -28,7 +29,7 @@ public class FuncionarioService {
     }
 
     public Funcionario buscarPorId(Long id) {
-        Funcionario funcionario = funcionarioRepository.findById(id).orElseThrow();
+        Funcionario funcionario = funcionarioRepository.findById(id).orElseThrow(() -> new FuncionarioNotFoundException("Funcionário não encontrado."));
         return funcionario;
     }
 
