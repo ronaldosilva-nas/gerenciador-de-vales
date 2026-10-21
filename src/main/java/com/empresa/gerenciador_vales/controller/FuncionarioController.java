@@ -1,7 +1,7 @@
 package com.empresa.gerenciador_vales.controller;
 
-import  com.empresa.gerenciador_vales.service.*;
-import com.empresa.gerenciador_vales.entity.*;
+import  com.empresa.gerenciador_vales.service.FuncionarioService;
+import com.empresa.gerenciador_vales.entity.Funcionario;
 
 import java.util.List;
 
