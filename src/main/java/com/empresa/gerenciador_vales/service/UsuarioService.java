@@ -1,5 +1,6 @@
 package com.empresa.gerenciador_vales.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.empresa.gerenciador_vales.entity.Funcionario;
@@ -11,12 +12,15 @@ import com.empresa.gerenciador_vales.repository.UsuarioRepository;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
-
     private final FuncionarioRepository funcionarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, FuncionarioRepository funcionarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository,
+                          FuncionarioRepository funcionarioRepository,
+                          PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
         this.funcionarioRepository = funcionarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Funcionario buscarFuncionarioPorId(Long id) {

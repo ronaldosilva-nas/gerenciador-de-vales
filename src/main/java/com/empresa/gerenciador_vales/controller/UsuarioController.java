@@ -1,5 +1,25 @@
 package com.empresa.gerenciador_vales.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.empresa.gerenciador_vales.entity.Usuario;
+import com.empresa.gerenciador_vales.service.UsuarioService;
+
+@RestController
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
+    private final UsuarioService usuarioService;
+
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
+
+    @PostMapping 
+    public Usuario salvar(@RequestBody Usuario usuario) {
+        return usuarioService.salvar(usuario);
+    }
 }
