@@ -34,6 +34,7 @@ public class UsuarioService {
         if(usuarioRepository.existsByEmail(usuario.getEmail())) {
             throw new RuntimeException("Este e-mail já está cadastrado.");
         }
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return usuarioRepository.save(usuario);
     }
 
