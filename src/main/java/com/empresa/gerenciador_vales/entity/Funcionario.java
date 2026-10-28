@@ -1,10 +1,13 @@
 package com.empresa.gerenciador_vales.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -30,6 +33,9 @@ public class Funcionario {
 
     @Column(name = "endereco", nullable = false, length = 255)
     private String endereco;
+
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDateTime dataCadastro;
 
     public Funcionario() {}
 
@@ -83,5 +89,14 @@ public class Funcionario {
 
     public String getEndereco() {
         return endereco;
+    }
+
+    public LocalDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    @PrePersist 
+    public void definirDataCadastro() {
+        this.dataCadastro = LocalDateTime.now();
     }
 }

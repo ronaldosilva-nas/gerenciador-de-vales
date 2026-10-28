@@ -1,5 +1,7 @@
 package com.empresa.gerenciador_vales.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -30,6 +33,9 @@ public class Usuario {
 
     @Column(name = "perfil", nullable = false, length = 30)
     private String perfil;
+
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDateTime dataCadastro;
 
     public Usuario() {}
 
@@ -74,6 +80,15 @@ public class Usuario {
 
     public Long getId() {
         return id;
+    }
+
+    public LocalDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    @PrePersist 
+    public void definirDataCadastro() {
+        this.dataCadastro = LocalDateTime.now();
     }
 
 }

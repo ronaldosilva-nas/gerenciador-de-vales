@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.empresa.gerenciador_vales.entity.Usuario;
+import com.empresa.gerenciador_vales.dto.UsuarioRequestDTO;
+import com.empresa.gerenciador_vales.dto.UsuarioResponseDTO;
 import com.empresa.gerenciador_vales.service.UsuarioService;
 
 @RestController
@@ -19,7 +20,7 @@ public class UsuarioController {
     }
 
     @PostMapping 
-    public Usuario salvar(@RequestBody Usuario usuario) {
-        return usuarioService.salvar(usuario);
+    public UsuarioResponseDTO salvar(@RequestBody UsuarioRequestDTO dto) {
+        return usuarioService.salvar(dto);
     }
 }
